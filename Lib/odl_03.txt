@@ -1,0 +1,20 @@
+#include "Data.h"
+#include "Joystick.h"
+
+Joystick *joy;
+Data data;
+
+void setup()
+{
+    Serial.begin(115200);
+    joy = new Joystick(data.Get());
+
+    Serial.print(data.ToString());
+
+    delay(2000);
+}
+
+void loop()
+{
+    Serial.println(joy->GetValue(data.Get().joyVal));
+}

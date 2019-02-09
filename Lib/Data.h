@@ -6,7 +6,12 @@
 #define DATA_START 32
 #define DATA_VER "d0"
 
-enum joyVal_e{raw, quad, center};
+enum joyVal_e
+{
+    raw,
+    quad,
+    center
+};
 
 struct DataStruct
 {
@@ -20,13 +25,14 @@ struct DataStruct
 class Data
 {
   public:
-    // DataStruct *raw;
-    // Data();
+    Data();
     void Save(DataStruct);
-    DataStruct Load();
+    DataStruct Get();
     String ToString();
 
-    private:
+  private:
+    bool loaded = false;
+    DataStruct data;
     DataStruct def = {DATA_VER, 1024, 0, A7, 4, 50, quad};
 };
 

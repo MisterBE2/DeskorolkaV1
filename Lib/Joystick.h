@@ -12,6 +12,7 @@ class Joystick {
         Joystick(byte, byte, unsigned int, unsigned int, unsigned int);
         Joystick(DataStruct);
         int GetValue();
+        int GetValue(joyVal_e);
         int GetValueQuad();
         int GetValueRaw();
         String ToString();

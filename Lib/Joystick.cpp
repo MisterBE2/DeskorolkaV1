@@ -79,6 +79,28 @@ int Joystick::GetValueQuad()
     return 0;
 }
 
+int Joystick::GetValue(joyVal_e type)
+{
+    switch (type)
+    {
+        case raw:
+            return Joystick::GetValueRaw();
+            break;
+
+        case quad:
+            return Joystick::GetValueQuad();
+            break;
+
+        case center:
+            return Joystick::GetValue();
+            break;
+        
+        default:
+            return 0;
+            break;
+    }
+}
+
 String Joystick::ToString()
 {
     String data;
