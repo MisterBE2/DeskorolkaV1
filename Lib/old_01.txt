@@ -1,0 +1,17 @@
+#include "Joystick.h"
+#include "Data.h"
+
+Joystick joy(A7, 1, 535, 986, 50);
+//Joystick joy(A7, 1);
+
+void setup()
+{
+    Serial.begin(115200);
+    Serial.println(joy.ToString());
+}
+
+void loop()
+{
+    Serial.println(joy.GetValueQuad());
+    delay(25);
+}

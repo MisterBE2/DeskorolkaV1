@@ -1,0 +1,30 @@
+#include "Data.h"
+
+Data data;
+
+void setup()
+{
+    DataStruct temp = {DATA_VER,986,536,A7,3,50, quad};
+    data.Save(temp);
+
+    Serial.begin(115200);
+    Serial.print(data.ToString());
+}
+
+void loop()
+{
+    switch (joyVal_e)
+    {
+        case raw:
+            
+            break;
+
+        case quad:
+            
+            break;
+
+        case coenter:
+            
+            break;
+    }
+}
