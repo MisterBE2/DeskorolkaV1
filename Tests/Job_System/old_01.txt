@@ -1,0 +1,62 @@
+#include "Job.h"
+#include "Something.h"
+
+//Something *s;
+IJob *jobs[3];
+
+void setup()
+{
+  Serial.begin(115200);
+  Serial.println("------------Start------------");
+
+  //IJobType *types[] = {new JobTimeIntervalType(2000), new JobFiniteType(4), nullptr, nullptr};
+  IJobType * types[] = {nullptr, new JobFiniteType(4), new JobTimeType(3000), nullptr};
+
+  jobs[0] = new Something(0, types);
+  //jobs[1] = new Something(1, new JobFiniteType(2));
+  //jobs[2] = new Something(2, new JobTimeIntervalType(2000));
+
+  for (int i = 0; i < 3; i++)
+  {
+    if (jobs[i] != nullptr)
+    {
+      jobs[i]->Start();
+    }
+  }
+}
+
+unsigned long loops = 0;
+
+void loop()
+{
+  for (int i = 0; i < 3; i++)
+  {
+    if (jobs[i] != nullptr)
+    {
+      if (jobs[i]->Finished())
+      {
+        Serial.print("Something Finished [");
+        Serial.print(i);
+        Serial.println("]");
+        delete jobs[i];
+
+        //jobs[i] = nullptr;
+
+        IJobType *types[] = {nullptr, new JobFiniteType(4), new JobTimeType(3000), nullptr};
+        jobs[i] = new Something(i, types);
+        Serial.print("Loop: ");
+        Serial.println(loops);
+      }
+      else
+      {
+        if (jobs[i]->Allow())
+        {
+          jobs[i]->Update();
+          jobs[i]->Step();
+        }
+      }
+    }
+  }
+
+  loops++;
+}

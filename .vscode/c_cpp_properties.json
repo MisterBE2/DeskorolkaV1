@@ -3,12 +3,11 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Users\\Kuba\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
-                "C:\\Users\\Kuba\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.0\\**",
                 "C:\\Program Files (x86)\\Arduino\\tools\\**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
                 "${workspaceFolder}/**",
-                "../${workspaceFolder}/**"
+                "../${workspaceFolder}/**",
+                "D:\\Programy\\CodeBlocks\\MinGW\\include\\**"
             ],
             "defines": [
                 "_DEBUG",
