@@ -111,13 +111,13 @@ public:
   virtual ~Job();
 
   // Retruns true when one of JobTypes are done
-  bool Finished();
+  virtual bool Finished();
 
   // Retruns true when all JobTypes allows task to run
-  bool Allow();
+  virtual bool Allow();
 
   // Setps all JobTypes
-  void Step();
+  virtual void Step();
 
 protected:
   byte jobTypesAmmount;

@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <stdlib.h>
-#include "Data.h"
 #include "Joystick.h"
 
 Joystick::Joystick()
@@ -17,15 +16,15 @@ Joystick::Joystick(byte _PIN_ANALOG, byte _PIN_BUTTON)
     Joystick::SetData(_PIN_ANALOG, _PIN_BUTTON, 0, 1024, 50);
 }
 
-Joystick::Joystick(DataStruct data)
-{
-    Joystick::SetData(
-        data.PIN_ANALOG,
-        data.PIN_BUTTON,
-        data.MIN_VAL,
-        data.MAX_VAL,
-        data.HIS);
-}
+// Joystick::Joystick(DataStruct data)
+// {
+//     Joystick::SetData(
+//         data.PIN_ANALOG,
+//         data.PIN_BUTTON,
+//         data.MIN_VAL,
+//         data.MAX_VAL,
+//         data.HIS);
+// }
 
 void Joystick::SetData(byte _PIN_ANALOG, byte _PIN_BUTTON, unsigned int _MIN_VAL, unsigned int _MAX_VAL, unsigned int _HIS)
 {
@@ -66,10 +65,10 @@ int Joystick::GetValueQuad()
     if (rawVal != 0)
     {
         float val = Joystick::GetValue() / 1024.0;
-        val = val * val;
+        val = val * val * val;
 
-        if (rawVal < 0)
-            return -(val * 1024);
+        // if (rawVal < 0)
+        //     return -(val * 1024);
 
         return val * 1024;
     }
@@ -77,27 +76,27 @@ int Joystick::GetValueQuad()
     return 0;
 }
 
-int Joystick::GetValue(_e_joyVal type)
-{
-    switch (type)
-    {
-    case raw:
-        return Joystick::GetValueRaw();
-        break;
+// int Joystick::GetValue(e_joyVal type)
+// {
+//     switch (type)
+//     {
+//     case raw:
+//         return Joystick::GetValueRaw();
+//         break;
 
-    case quad:
-        return Joystick::GetValueQuad();
-        break;
+//     case quad:
+//         return Joystick::GetValueQuad();
+//         break;
 
-    case center:
-        return Joystick::GetValue();
-        break;
+//     case center:
+//         return Joystick::GetValue();
+//         break;
 
-    default:
-        return 0;
-        break;
-    }
-}
+//     default:
+//         return 0;
+//         break;
+//     }
+// }
 
 String Joystick::ToString()
 {

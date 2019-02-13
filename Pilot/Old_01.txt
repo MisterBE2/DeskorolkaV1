@@ -1,0 +1,28 @@
+
+
+
+void setup()
+{
+    pinMode(5, OUTPUT);
+    digitalWrite(5, HIGH);
+
+    pinMode(2, OUTPUT);
+    digitalWrite(2, HIGH);
+
+    
+}
+
+void loop()
+{
+    int val = joy->GetValueQuad();
+    Serial.println(val);
+    radio.write(&val, sizeof(val));
+
+    // if (Serial.available())
+    // {
+    //     int val = Serial.readStringUntil('\n').toInt();
+    //     Serial.print("Sending: ");
+    //     Serial.println(val);
+    //     radio.write(&val, sizeof(val));
+    // }
+}

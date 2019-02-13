@@ -1,0 +1,16 @@
+#include "Core.h"
+#include "Job.h"
+
+void setup()
+{
+    Serial.begin(115200);
+    Core::Begin();
+}
+
+void loop()
+{
+    digitalWrite(_PIN_LED, LOW);
+    delay(500);
+    digitalWrite(_PIN_LED, HIGH);
+    delay(500);
+}

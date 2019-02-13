@@ -6,7 +6,7 @@
 #define DATA_START 32
 #define DATA_VER "d0"
 
-enum joyVal_e
+enum e_joyVal
 {
     raw,
     quad,
@@ -18,7 +18,7 @@ struct DataStruct
     char VER[3];
     unsigned int MAX_VAL, MIN_VAL;
     byte PIN_ANALOG, PIN_BUTTON, HIS;
-    joyVal_e joyVal;
+    e_joyVal joyVal;
 
 } typedef DataStruct;
 

@@ -1,7 +1,7 @@
 {
     "board": "arduino:avr:nano",
-    "configuration": "cpu=atmega168",
-    "sketch": "Lib\\Lib.ino",
+    "sketch": "Pilot\\Pilot.ino",
     "port": "COM21",
-    "output": "../ArduinoOutput"
+    "output": "../ArduinoOutput",
+    "configuration": "cpu=atmega168"
 }

@@ -1,6 +1,6 @@
 #include "Core.h"
 #include "Job.h"
-#include "Toggle.h"
+#include "Pitches.h"
 
 Job *job;
 
@@ -8,8 +8,15 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("Start");
+    // notes in the melody:
+    unsigned int melody[] = {
+        NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4};
 
-    job = new Toggle(_PIN_LED, step, duration, 10);
+    // note durations: 4 = quarter note, 8 = eighth note, etc.:
+    byte noteDurations[] = {
+        4, 8, 8, 4, 4, 4, 4, 4};
+
+    job = new Buzzer(melody, noteDurations, 8);
     job->Start();
     Serial.println("End Start");
 }
@@ -18,6 +25,7 @@ void loop()
 {
     if (job != nullptr)
     {
+        Serial.println("Update");
         if (job->Finished())
         {
             delete job;
